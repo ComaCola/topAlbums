@@ -1,0 +1,11 @@
+com\demo\albums\Application.class
+com\demo\albums\model\ArtistResultFromJson.class
+com\demo\albums\service\AlbumServiceImpl.class
+com\demo\albums\controller\ArtistController.class
+com\demo\albums\model\Artist.class
+com\demo\albums\service\IAlbumService.class
+com\demo\albums\service\IArtistService.class
+com\demo\albums\model\AlbumResultFromJson.class
+com\demo\albums\controller\AlbumController.class
+com\demo\albums\model\Album.class
+com\demo\albums\service\ArtistServiceImpl.class
