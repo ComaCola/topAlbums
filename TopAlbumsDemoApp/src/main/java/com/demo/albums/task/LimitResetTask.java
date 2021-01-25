@@ -1,9 +1,9 @@
 package com.demo.albums.task;
 
-import com.demo.albums.service.IRequestCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import com.demo.albums.service.IRequestCounterService;
 
 /**
  *
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class LimitResetTask {
 
-    private final IRequestCounter requestCounter;
+    private final IRequestCounterService requestCounter;
 
     @Autowired
-    public LimitResetTask(IRequestCounter requestCounter) {
+    public LimitResetTask(IRequestCounterService requestCounter) {
         this.requestCounter = requestCounter;
     }
 

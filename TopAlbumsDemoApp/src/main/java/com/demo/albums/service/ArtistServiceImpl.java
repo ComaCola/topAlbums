@@ -28,12 +28,12 @@ public class ArtistServiceImpl implements IArtistService {
 
     private final ICachedResponseDao cachedResponseDao;
     private final IRegisteredRequestLogDao registeredRequestLogDao;
-    private final IRequestCounter requestCounter;
+    private final IRequestCounterService requestCounter;
 
     @Autowired
     public ArtistServiceImpl(ICachedResponseDao cachedArtistDao,
             IRegisteredRequestLogDao registeredRequestLogDao,
-            IRequestCounter requestCounter) {
+            IRequestCounterService requestCounter) {
         this.cachedResponseDao = cachedArtistDao;
         this.registeredRequestLogDao = registeredRequestLogDao;
         this.requestCounter = requestCounter;

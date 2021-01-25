@@ -7,10 +7,10 @@ import com.demo.albums.service.IAlbumService;
 import com.demo.albums.service.IArtistService;
 import com.demo.albums.service.ICachedResponseService;
 import com.demo.albums.service.IRegisteredRequestLogService;
-import com.demo.albums.service.IRequestCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import com.demo.albums.service.IRequestCounterService;
 
 /**
  *
@@ -27,14 +27,14 @@ public class RegisteredRequestExecutionAndCachedResponseUpdateAtAnyTimeTask {
 
     private final IRegisteredRequestLogService registeredRequestLogService;
 
-    private final IRequestCounter requestCounter;
+    private final IRequestCounterService requestCounter;
 
     private final ICachedResponseService cachedResponseService;
 
     @Autowired
     public RegisteredRequestExecutionAndCachedResponseUpdateAtAnyTimeTask(
             IArtistService artistService, IAlbumService albumService,
-            IRegisteredRequestLogService logService, IRequestCounter requestCounter,
+            IRegisteredRequestLogService logService, IRequestCounterService requestCounter,
             ICachedResponseService cachedResponseService) {
         this.artistService = artistService;
         this.albumService = albumService;

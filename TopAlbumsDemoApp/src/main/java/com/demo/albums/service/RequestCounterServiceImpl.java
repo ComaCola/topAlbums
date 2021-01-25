@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
  * @author Deividas
  */
 @Service
-public class RequestCounterImpl implements IRequestCounter {
+public class RequestCounterServiceImpl implements IRequestCounterService {
 
-    private static final long REQUEST_LIMIT = 10;
+    private static final long REQUEST_LIMIT = 100;
     private static long newRequestCounter;          // count of requests when iTunes was called (no data found in cache)
     private static long cachedRequestCounter;       // count of requests when data found in cache (no call to iTunes)
     private static long requestAfterLimitCounter;   // count of requests when limit was exceeded

@@ -4,7 +4,7 @@ package com.demo.albums.service;
  *
  * @author Deividas
  */
-public interface IRequestCounter {
+public interface IRequestCounterService {
 
     void incrementCachedRequestCounter();
 

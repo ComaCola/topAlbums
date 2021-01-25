@@ -28,10 +28,10 @@ public class AlbumServiceImpl implements IAlbumService {
 
     private final ICachedResponseDao cachedResponseDao;
     private final IRegisteredRequestLogDao registeredRequestLogDao;
-    private final IRequestCounter requestCounter;
+    private final IRequestCounterService requestCounter;
 
     @Autowired
-    public AlbumServiceImpl(ICachedResponseDao cachedResponseDao, IRegisteredRequestLogDao registeredRequestLogDao, IRequestCounter requestCounter) {
+    public AlbumServiceImpl(ICachedResponseDao cachedResponseDao, IRegisteredRequestLogDao registeredRequestLogDao, IRequestCounterService requestCounter) {
         this.cachedResponseDao = cachedResponseDao;
         this.registeredRequestLogDao = registeredRequestLogDao;
         this.requestCounter = requestCounter;
