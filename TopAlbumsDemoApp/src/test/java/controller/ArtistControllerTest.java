@@ -1,7 +1,7 @@
 package controller;
 
 import com.demo.albums.Application;
-import com.demo.albums.model.Artist;
+import com.demo.albums.model.pojo.Artist;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
@@ -61,24 +61,4 @@ public class ArtistControllerTest {
         assertTrue(artistList.size() > 0);
     }
 
-    @Test
-    public void artistListLoadWithLimitTest() throws Exception {
-        String urlPattern = "/artist/%s/%d";
-        long limit = 25;
-        String term = "abba";
-        String url = String.format(urlPattern, term, limit);
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
-                .andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(status, 200);
-
-        assertEquals(MediaType.APPLICATION_JSON_VALUE, mvcResult.getResponse().getContentType());
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<Artist> artistList = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Artist>>() {
-        });
-        assertNotNull(artistList);
-        assertTrue(artistList.size() == limit);
-    }
 }

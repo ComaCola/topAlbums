@@ -1,6 +1,6 @@
 package com.demo.albums.controller;
 
-import com.demo.albums.model.Album;
+import com.demo.albums.model.pojo.Album;
 import com.demo.albums.service.IAlbumService;
 import java.io.IOException;
 import java.util.List;
@@ -33,15 +33,6 @@ public class AlbumController {
     @GetMapping("/album/{artistId}")
     public ResponseEntity<List<Album>> getAlbums(@PathVariable Long artistId) throws IOException {
         List<Album> albumSet = albumService.loadAlbumList(artistId);
-        if (albumSet == null) {
-            return emptyResponseEntity();
-        }
-        return new ResponseEntity<>(albumSet, HttpStatus.OK);
-    }
-
-    @GetMapping("/album/{artistId}/{limit}")
-    public ResponseEntity<List<Album>> getAlbums(@PathVariable Long artistId, @PathVariable Long limit) throws IOException {
-        List<Album> albumSet = albumService.loadAlbumSet(artistId, limit);
         if (albumSet == null) {
             return emptyResponseEntity();
         }

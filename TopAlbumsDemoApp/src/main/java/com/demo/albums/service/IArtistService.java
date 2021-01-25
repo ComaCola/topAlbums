@@ -1,7 +1,6 @@
 package com.demo.albums.service;
 
-import com.demo.albums.model.Artist;
-import java.io.IOException;
+import com.demo.albums.model.pojo.Artist;
 import java.util.List;
 
 /**
@@ -10,7 +9,9 @@ import java.util.List;
  */
 public interface IArtistService {
 
-    String ARTIST_TERM_URL = "https://itunes.apple.com/search?entity=allArtist&term=%s";
+    List<Artist> loadArtistList(String name);
 
-    List<Artist> loadArtistList(String name) throws IOException;
+    List<Artist> loadArtistListFromItunes(String artistName);
+
+    String getArtistTermUrl();
 }

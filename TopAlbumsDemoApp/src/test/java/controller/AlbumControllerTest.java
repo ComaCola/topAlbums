@@ -1,13 +1,12 @@
 package controller;
 
 import com.demo.albums.Application;
-import com.demo.albums.model.Album;
+import com.demo.albums.model.pojo.Album;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class AlbumControllerTest {
     @Test
     public void albumListNoContentTest() throws Exception {
         String urlPattern = "/album/%d";
-        String artistId = "";
+        long artistId = 0;
         String url = String.format(urlPattern, artistId);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url)).andReturn();
 
@@ -49,7 +48,6 @@ public class AlbumControllerTest {
     public void albumListLoadTest() throws Exception {
         String urlPattern = "/album/%d";
         long artistId = 3492;
-        long defaultLimit = 5;
         String url = String.format(urlPattern, artistId);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url)).andReturn();
 
@@ -61,27 +59,6 @@ public class AlbumControllerTest {
         List<Album> albumList = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Album>>() {
         });
         assertNotNull(albumList);
-        assertTrue(albumList.size() == defaultLimit);
     }
 
-    @Test
-    public void albumListLoadWithLimitTest() throws Exception {
-        String urlPattern = "/album/%d/%d";
-        long artistId = 3492;
-        long limit = 10;
-        String url = String.format(urlPattern, artistId, limit);
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
-                .andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(status, 200);
-
-        assertEquals(MediaType.APPLICATION_JSON_VALUE, mvcResult.getResponse().getContentType());
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<Album> albumList = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Album>>() {
-        });
-        assertNotNull(albumList);
-        assertTrue(albumList.size() == limit);
-    }
 }

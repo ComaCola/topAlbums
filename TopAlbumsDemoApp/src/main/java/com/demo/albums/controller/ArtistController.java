@@ -1,6 +1,6 @@
 package com.demo.albums.controller;
 
-import com.demo.albums.model.Artist;
+import com.demo.albums.model.pojo.Artist;
 import com.demo.albums.service.IArtistService;
 import java.io.IOException;
 import java.util.List;
