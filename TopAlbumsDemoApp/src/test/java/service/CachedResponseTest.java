@@ -1,4 +1,4 @@
-package controller;
+package service;
 
 import com.demo.albums.Application;
 import com.demo.albums.dao.ICachedResponseDao;
