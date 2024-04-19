@@ -1,0 +1,15 @@
+Pros:
+- The general idea about saving request after the request limit has been reached.
+- All classes are not overcrowded with code
+
+Cons:
+- No knowledge about multi-threading issues, for instance, on: CachedResponseDaoImpl, RequestCounterImpl
+- Not the best application layering
+- Do not follow Java naming standards (like CachedResponse in package name or cachedResponseDataMap as a constant)
+- Not very RESTFull resource naming `/artist/{artistName}` - it should be plural
+- In some cases, endpoints return NO_CONTENT when no data found, when it is possible to return an empty List. It makes it more difficult to handle such responses in FE.
+- For logging, libraries (like SLF4J or Log4J) should be used, instead of printing response to the console
+- No knowledge about HTTP clients (like RestTemplate etc.), using a simple `new URL(urlString);return url.openStream();`
+- Exposing internal methods like: `AlbumServiceImpl.loadAlbumListFromItunes`, which should be private, and the outside world shouldn’t care how albums are fetched. So, a single public method: `loadAlbumList` should be enough.
+- Some methods are exposed only for tests, which doesn't show a very good design in tests or code.
+- Tests do not check the result of method - they check that something has been returned
